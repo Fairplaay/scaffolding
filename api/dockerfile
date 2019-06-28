@@ -1,0 +1,22 @@
+# Building the backend base in Node Js
+
+# image to use
+FROM node:8.16.0-jessie
+
+# Create a directory. -p to make sure parent dir exists
+RUN mkdir -p /usr/src/api
+
+# Set working directory in the container
+WORKDIR /usr/src/api
+
+# Copy all local files (source) into the container (destination)
+COPY . .
+
+# Install dependencies
+RUN npm install
+
+# Expose port 3001
+EXPOSE 3001
+
+# Run the nodejs app
+CMD ["npm", "start"]

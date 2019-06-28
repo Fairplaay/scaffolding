@@ -1,0 +1,22 @@
+# Building the frontend base in Vue Js
+
+# image to use
+FROM node:lts-alpine
+
+# Create a directory. -p to make sure parent dir exists
+RUN mkdir -p /usr/src/app
+
+# Set working directory in the container
+WORKDIR /usr/src/app
+
+# Copy all local files (source) into the container (destination)
+COPY . .
+
+# Install dependencies
+RUN npm install
+
+# Expose port 3000
+EXPOSE 3000
+
+# run app
+CMD [ "npm", "start" ]

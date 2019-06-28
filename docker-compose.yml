@@ -1,0 +1,23 @@
+version: "3.0"
+
+services:
+  database:
+    image: mvertes/alpine-mongo:4.0.5-0    # name of the service
+    ports:
+      - "27018:27017" # specify port mapping
+
+  api_web:     # name the second service
+    build: api  # specify the directory of the dockerfile
+    volumes:
+      - ./api:/usr/src/api # copy files in containers
+    ports:
+      - "3001:3001" # specify port mapping
+    links:
+      - database
+
+  app_web:          # name the firs service
+    build: app # specify the directory of the dockerfile
+    volumes:
+      - ./app:/usr/src/app # copy files in containers
+    ports:
+      - "3000:3000" # specify port mapping
