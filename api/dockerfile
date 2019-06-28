@@ -1,13 +1,16 @@
 # Building the backend base in Node Js
 
 # image to use
-FROM node:8.16.0-jessie
+FROM node:8.16.0-alpine
 
 # Create a directory. -p to make sure parent dir exists
 RUN mkdir -p /usr/src/api
 
 # Set working directory in the container
 WORKDIR /usr/src/api
+
+ENV NODE_PATH=/node_modules
+ENV PATH=$PATH:/node_modules/.bin
 
 # Copy all local files (source) into the container (destination)
 COPY . .
