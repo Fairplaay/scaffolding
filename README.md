@@ -4,6 +4,15 @@ Scafold MERN + DOCKER
 
 In the project directory, you can run:
 
+
+### `cd app && npm install`
+
+install dependencies
+
+### `cd api && npm install`
+
+install dependencies
+
 ### `docker-compose up -d`
 
 Runs the frontend react js in the development mode.<br>
