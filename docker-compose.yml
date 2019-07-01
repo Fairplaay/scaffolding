@@ -1,22 +1,28 @@
-version: "3.0"
+version: "3"
 
 services:
-  database:
-    image: mvertes/alpine-mongo:4.0.5-0    # name of the service
+  database: # name of the service
+    image: mongo
+    container_name: mongodb
     ports:
-      - "27018:27017" # specify port mapping
+      - "27017:27017"
+    command: --smallfiles
 
-  api_web:     # name the second service
+  api_web:      # name the second service
     build: api  # specify the directory of the dockerfile
+    container_name: nodejs
     volumes:
       - ./api:/usr/src/api # copy files in containers
     ports:
       - "3001:3001" # specify port mapping
+    environment:
+      PORT: 3001
     links:
       - database
 
   app_web:          # name the firs service
     build: app # specify the directory of the dockerfile
+    container_name: reactjs
     volumes:
       - ./app:/usr/src/app # copy files in containers
     ports:
