@@ -2,11 +2,10 @@ version: "3"
 
 services:
   database: # name of the service
-    image: mongo
-    container_name: mongodb
+    image: mvertes/alpine-mongo:4.0.5-0
+    container_name: mongodb # name of container
     ports:
       - "27017:27017"
-    command: --smallfiles
 
   api_web:      # name the second service
     build: api  # specify the directory of the dockerfile
